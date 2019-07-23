@@ -13,7 +13,7 @@
                 <ul class="pagination">
                     {% if page_obj.has_previous %}
                         <li class="page-item">
-                          <a class="page-link" href="{% url 'artikel:list' page_obj.previous_page_number %}">Previous</a>
+                          <a class="page-link" href="{% url 'artikel:category' kategori page_obj.previous_page_number %}">Previous</a>
                         </li>   
                     {% else %}
                         <li class="page-item disabled">
@@ -27,13 +27,13 @@
                             <span class="page-link" href="#">{{page}} <span class="sr-only">(current)</span></span>
                         </li>
                         {% else %}
-                        <li class="page-item"><a class="page-link" href="{% url 'artikel:list' page%}">{{page}}</a></li>
+                        <li class="page-item"><a class="page-link" href="{% url 'artikel:category' kategori page%}">{{page}}</a></li>
                         {% endif %}
                     {% endfor %}
 
                     {% if page_obj.has_next %}
                         <li class="page-item">
-                          <a class="page-link" href="{% url 'artikel:list' page_obj.next_page_number %}">Next</a>
+                          <a class="page-link" href="{% url 'artikel:category' kategori page_obj.next_page_number %}">Next</a>
                         </li>
                     {% else %}
                         <li class="page-item disabled">
@@ -53,6 +53,7 @@
     <div class="col-sm">
         <h3>Kategori</h3>
         <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="{% url 'artikel:list' 1 %}">Semua Kategori</a></li>
             {% for kategori in list_kategori %}
             <li class="list-group-item"><a href="{% url 'artikel:category' kategori 1 %}">{{kategori}}</a></li>
             {% endfor %}
